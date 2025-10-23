@@ -8,8 +8,9 @@ var connectionString = builder.Configuration.GetConnectionString("Pizzas") ?? "D
 
 builder.Services.AddEndpointsApiExplorer();
 
+builder.Services.AddSqlite<PizzaDb>(connectionString);
+// builder.Services.AddDbContext<PizzaDb>(options => options.UseInMemoryDatabase("items"));
 
-builder.Services.AddDbContext<PizzaDb>(options => options.UseInMemoryDatabase("items"));
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
